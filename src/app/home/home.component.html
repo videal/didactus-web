@@ -1,0 +1,18 @@
+<h1>Angel.co startups - {{count}} companies in the database</h1>
+<div class="row">
+  <h3>Export companies and contacts</h3>
+  <div data-toggle="buttons" style="text-align:center" class="btn-group">
+    <label *ngFor="let item of items; let i = index" class="btn btn-primary" [(ngModel)]="item.state" btnCheckbox>{{item.name}}</label>
+    <label>
+        <input #box (keyup.enter)="onEnter(box.value)" type="text" class="form-control" [(ngModel)]="newTechnology" placeholder="Write technology">
+    </label>
+
+  </div>
+  <div class="mt-14">
+    <button (click)="send()" [disabled]="disabled" data-loading-text="Loading..." class="btn btn-default btn-lg send"><i
+      class="fa fa-pied-piper"></i><span class="network-name">{{buttonTitle}}</span></button>
+  </div>
+  <div class="mt-14">
+    <button *ngFor="let task of tasks; let i = index" class="btn btn-default btn-sm mlr-4" routerLink="/task/{{task}}">Task {{i+1}}</button>
+  </div>
+</div>

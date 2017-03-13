@@ -1,0 +1,11 @@
+{
+  "name": "didactus-web",
+  "description": "The front end of didactus system",
+  "repository": "",
+  "keywords": [
+    "angular2",
+    "express",
+    "node",
+    "typescript"
+  ]
+}

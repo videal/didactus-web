@@ -1,0 +1,11 @@
+.intro-message h1,
+.intro-message h2,
+.intro-message h3,
+.intro-message h4,
+.intro-message h5,
+.intro-message h6 {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: white; }
+
+/*# sourceMappingURL=app.component.css.map */

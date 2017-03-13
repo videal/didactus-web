@@ -1,0 +1,11 @@
+<h1>Please wait. Processing your companies and contacts.</h1>
+<h3>{{percent}} %</h3>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+  <progressbar [ngClass]="{ hidden: max == count }" class="progress-striped active" [max]="max" [value]="count">
+    <span style="color:white; white-space:nowrap;">{{count}} / {{max}}</span>
+  </progressbar>
+
+    <button [disabled]="disabled" [ngClass]="{ hidden: count == 0 }" (click)="downloadCSV()" type="button" class="btn btn-primary">{{buttonTitle}}</button>
+  </div>
+</div>
