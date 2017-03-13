@@ -116,7 +116,7 @@ export class HomeComponent {
     this.items.push({
       state: true,
       name: value,
-      value: '%5Blocations%5D%5B%5D=' + value
+      value: '%5Bskills%5D%5B%5D=' + value
     });
     this.newTechnology = '';
   }
