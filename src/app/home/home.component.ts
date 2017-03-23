@@ -120,4 +120,8 @@ export class HomeComponent {
     });
     this.newTechnology = '';
   }
+  
+  private deleteFilter(value) {
+    this.items = this.items.filter(item => item.name !== value);
+  }
 }

@@ -1,13 +1,30 @@
 <h1>Angel.co startups - {{count}} companies in the database</h1>
 <div class="row">
   <h3>Export companies and contacts</h3>
-  <div data-toggle="buttons" style="text-align:center" class="btn-group">
-    <label *ngFor="let item of items; let i = index" class="btn btn-primary" [(ngModel)]="item.state" btnCheckbox>{{item.name}}</label>
+
+  <div class="btn-group" style="text-align:center">
+    <ng-container *ngFor="let item of items; let i = index">
+      <div class="btn-group" style="margin:0px;padding:0px;" dropdown>
+        <label class="btn btn-primary"
+            [(ngModel)]="item.state"
+            btnCheckbox>
+            <div style="align:right;display: inline-block;">{{item.name}}</div>
+            <div
+                style="display: inline-block;width:20px;height:100%;box-shadow:none;"
+                id="drpdwn_{{i}}"
+                dropdownToggle>  <span class="caret"></span>
+            </div>
+        </label>
+        <ul dropdownMenu role="menu" [attr.aria-labelledby]="'drpdwn_' + i">
+            <li role="menuitem"><a class="dropdown-item" href="#" (click)="deleteFilter(item.name)">Delete</a></li>
+        </ul>
+        </div>
+    </ng-container>
     <label>
         <input #box (keyup.enter)="onEnter(box.value)" type="text" class="form-control" [(ngModel)]="newTechnology" placeholder="Write technology">
     </label>
-
   </div>
+  
   <div class="mt-14">
     <button (click)="send()" [disabled]="disabled" data-loading-text="Loading..." class="btn btn-default btn-lg send"><i
       class="fa fa-pied-piper"></i><span class="network-name">{{buttonTitle}}</span></button>
