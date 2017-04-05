@@ -7,12 +7,14 @@ import { routing } from './app.router';
 import { SharedModule } from './shared/shared.module';
 import { HomeService } from './home/home.service';
 import { TaskService } from './task/task.service';
+import { BsDropdownModule } from 'ng2-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    BsDropdownModule.forRoot(),
     BrowserModule,
     SharedModule,
     FormsModule,

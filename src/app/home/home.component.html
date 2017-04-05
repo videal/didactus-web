@@ -15,7 +15,7 @@
                 dropdownToggle>  <span class="caret"></span>
             </div>
         </label>
-        <ul dropdownMenu role="menu" [attr.aria-labelledby]="'drpdwn_' + i">
+        <ul *dropdownMenu role="menu" [attr.aria-labelledby]="'drpdwn_' + i">
             <li role="menuitem"><a class="dropdown-item" href="#" (click)="deleteFilter(item.name)">Delete</a></li>
         </ul>
         </div>

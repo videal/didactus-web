@@ -88,6 +88,15 @@ export class HomeComponent {
     }
   }
 
+  onEnter(value: string) {
+    this.items.push({
+      state: true,
+      name: value,
+      value: '%5Bskills%5D%5B%5D=' + value
+    });
+    this.newTechnology = '';
+  }
+
   private cookieProcessing(id: string) {
     let tasksCookie = Cookie.get('tasks');
     if (tasksCookie) {
@@ -111,14 +120,6 @@ export class HomeComponent {
     if (tasksCookie) {
       this.tasks = tasksCookie.split('|');
     }
-  }
-  onEnter(value: string) {
-    this.items.push({
-      state: true,
-      name: value,
-      value: '%5Bskills%5D%5B%5D=' + value
-    });
-    this.newTechnology = '';
   }
   
   private deleteFilter(value) {
