@@ -1,7 +1,6 @@
 <h1>Angel.co startups - {{count}} companies in the database</h1>
 <div class="row">
   <h3>Export companies and contacts</h3>
-
   <div class="btn-group" style="text-align:center">
     <ng-container *ngFor="let item of items; let i = index">
       <div class="btn-group" style="margin:0px;padding:0px;" dropdown>
@@ -15,7 +14,7 @@
                 dropdownToggle>  <span class="caret"></span>
             </div>
         </label>
-        <ul *dropdownMenu role="menu" [attr.aria-labelledby]="'drpdwn_' + i">
+        <ul  *dropdownMenu class="dropdown-menu" role="menu">
             <li role="menuitem"><a class="dropdown-item" href="#" (click)="deleteFilter(item.name)">Delete</a></li>
         </ul>
         </div>

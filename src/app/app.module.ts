@@ -14,7 +14,6 @@ import { BsDropdownModule } from 'ng2-bootstrap/dropdown';
     AppComponent
   ],
   imports: [
-    BsDropdownModule.forRoot(),
     BrowserModule,
     SharedModule,
     FormsModule,

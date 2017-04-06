@@ -121,8 +121,8 @@ export class HomeComponent {
       this.tasks = tasksCookie.split('|');
     }
   }
-  
+
   private deleteFilter(value) {
-    this.items = this.items.filter(item => item.name !== value);
+     this.items = this.items.filter(item => item.name !== value);
   }
 }
