@@ -15,6 +15,7 @@ export class HomeComponent {
   disabled = false;
   buttonTitle = 'Start export';
   newTechnology = '';
+  newLocation = '';
 
   constructor(private homeService: HomeService) {
     this.taskProcessing();
@@ -88,13 +89,24 @@ export class HomeComponent {
     }
   }
 
-  onEnter(value: string) {
+  onEnterTechnology(value: string) {
     this.items.push({
       state: true,
       name: value,
       value: '%5Bskills%5D%5B%5D=' + value
     });
     this.newTechnology = '';
+    console.log(this.items);
+  }
+
+    onEnterLocation(value: string) {
+    this.items.push({
+      state: true,
+      name: value,
+      value: '%5Blocations%5D%5B%5D=' + value
+    });
+    this.newLocation = '';
+    console.log(this.items);
   }
 
   private cookieProcessing(id: string) {

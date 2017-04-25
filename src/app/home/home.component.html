@@ -19,9 +19,14 @@
         </ul>
         </div>
     </ng-container>
+    <div>
     <label>
-        <input #box (keyup.enter)="onEnter(box.value)" type="text" class="form-control" [(ngModel)]="newTechnology" placeholder="Write technology">
+        <input #box1 (keyup.enter)="onEnterTechnology(box1.value)" type="text" class="form-control" [(ngModel)]="newTechnology" placeholder="Write technology">
     </label>
+        <label>
+        <input #box (keyup.enter)="onEnterLocation(box.value)" type="text" class="form-control" [(ngModel)]="newLocation" placeholder="Write location">
+    </label>
+    </div>
   </div>
   
   <div class="mt-14">
