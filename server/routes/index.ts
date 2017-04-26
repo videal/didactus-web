@@ -58,5 +58,18 @@ router.get('/report/:id', (request, response) => {
     });
 });
 
+router.get('/reportall', (request, response) => {
+  let id = request.params.id;
+  model.company.Get({})
+    .then(result => {
+      return AggrigatorEmails.default(result);
+    })
+    .then(result => {
+      response.json(result);
+    })
+    .catch(error => {
+      response.status(402).json({ error: error });
+    });
+});
 
 export { router };

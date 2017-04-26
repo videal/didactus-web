@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HomeService } from './home.service';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { FilterModel } from './filter.model';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,9 @@ export class HomeComponent {
   items: Array<FilterModel>;
   tasks: Array<string>;
   disabled = false;
+  disabledAll = false;
   buttonTitle = 'Start export';
+  DownloadAllTitle = 'Download all';
   newTechnology = '';
   newLocation = '';
 
@@ -90,23 +93,55 @@ export class HomeComponent {
   }
 
   onEnterTechnology(value: string) {
-    this.items.push({
-      state: true,
-      name: value,
-      value: '%5Bskills%5D%5B%5D=' + value
-    });
-    this.newTechnology = '';
-    console.log(this.items);
+    if (value !== '') {
+      this.items.push({
+        state: true,
+        name: value,
+        value: '%5Bskills%5D%5B%5D=' + value
+      });
+      this.newTechnology = '';
+      console.log(this.items);
+    }
   }
 
-    onEnterLocation(value: string) {
-    this.items.push({
-      state: true,
-      name: value,
-      value: '%5Blocations%5D%5B%5D=' + value
-    });
-    this.newLocation = '';
-    console.log(this.items);
+  onEnterLocation(value: string) {
+    if (value !== '') {
+      this.items.push({
+        state: true,
+        name: value,
+        value: '%5Blocations%5D%5B%5D=' + value
+      });
+      this.newLocation = '';
+      console.log(this.items);
+    }
+  }
+
+  downloadAll() {
+    this.DownloadAllTitle = 'Loading ...';
+    this.disabledAll = true;
+    this.homeService.getAllCSV()
+      .subscribe(data => {
+        let result = data.json();
+        this.saveCSV(result);
+        this.disabledAll = false;
+        this.DownloadAllTitle = 'Download all';
+      },
+      error => {
+        this.DownloadAllTitle = 'Download all';
+        this.disabledAll = false;
+        console.log(error);
+      });
+  }
+
+  private saveCSV(json: string) {
+    let options = {
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      showLabels: true,
+      showTitle: false
+    };
+    new Angular2Csv(json, 'Vacancies', options);
   }
 
   private cookieProcessing(id: string) {
@@ -135,6 +170,6 @@ export class HomeComponent {
   }
 
   private deleteFilter(value) {
-     this.items = this.items.filter(item => item.name !== value);
+    this.items = this.items.filter(item => item.name !== value);
   }
 }

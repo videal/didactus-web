@@ -19,5 +19,9 @@ export class HomeService {
   getDispatcherRun(): Observable<any> {
     return this.http.get('https://node-angelco-task-dispatcher.herokuapp.com/');
   }
+
+  getAllCSV(): Observable<any> {
+    return this.http.get('/api/reportall');
+  }
 }
 
